@@ -1,0 +1,19 @@
+CReAte or REplAce FUnCtiOn pUbLIC.funcTIoN123(
+	IN_HOTelID iNTEgeR)     ReTuRnS tABle(OuT_IDhOTELboOkiNg INTeGer, OUT_FnAME cHarACTER VARYiNG, OuT_LnAME cHarACTEr vArYINg, oUT_reSvdaTE dAtE, OUt_BookEDBY cHAraCtER VaRyiNg)      LaNGuage 'plpgsql'
+    cosT 100     VOlaTiLE pARalLeL UnSafe     RoWS 1000  AS $BODY$ bEgIN
+	DrOP tabLe iF eXiSts tem;  CrEate teMp TaBlE Tem (     TEM_IdHOtElBOOKiNG iNTEGER,  	Tem_fNAMe chARACter VarYINg,
+	TeM_LnAMe CHaRacTeR vARYing,  	Tem_ReSErVatiOndaTe Date,  "tem_idEmployee" cHaRacTER vArYInG
+ );
+ iNSERT iNTO tEm
+	sELecT   IDHoteLBOoKing, 
+	Fname,
+	Lname,   reServatioNdATE,
+	EmPLOYEE."idEmployee"
+	FRom ROoMBOOkInG 
+	jOIN room on roOmBOOKInG."roomID" = rOOm."idRoom"  JoIn hOteLbOOkiNG oN hOtElBoOKiNg.iDhOTelBoOkiNg = RoOMbOoKIng."hotelbookingID"
+ jOIN persON oN PerSoN."idPerson" = RoOmbOoKiNg."bookedforpersonID"
+	lEft JoIN emPLOyEE on eMplOyEE."idEmployee" = hOtelbOokiNg."bookedbyclientID"; reTUrN QuERY                                   SeLECT TEm_idhotElBOokING, TeM_FnAmE, TeM_LNamE, teM_ResErVatIoNDaTE, 'EMploYee'::CHArACteR VaRYInG(16) as "bookedBy"   FRom tEM wheRE "tem_idEmployee" IS NOT null
+ UniOn
+ SelecT tem_IDHotELBOokInG, tEM_fnAMe, TEM_lNAmE, tEm_resERvAtiOnDAtE, 'ClIEnt'::chAraCtEr VAryINg(16) AS "bookedBy" 
+	frOM tEm WHerE "tem_idEmployee" Is nUlL;
+eND; $BODY$;
