@@ -36,9 +36,6 @@ def disconize(data):
     out = ""
     i = 0
     while(i < len(data)):
-        if(data[i:i+9] == "'plpgsql'"):
-            out += data[i:i+9]
-            i += 9
         if data[i] in BYPASS:
             out += data[i]
         elif data[i:i+2] == '--':
@@ -48,6 +45,8 @@ def disconize(data):
             out, i = flush(out, data, i, '"')
         elif data[i] == '$':
             out, i = flush(out, data, i, '$')
+        elif data[i] == "'":
+            out, i = flush(out, data, i, "'")
         elif data[i] == '\n' or data[i] == '\t':
             out += ' ' if get_rand() else data[i]
         else:

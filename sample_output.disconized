@@ -1,0 +1,33 @@
+
+ crEate TaBle PUbLic.pErSON
+(
+    "idPerson" InTEGEr noT NULL,     fnaME chARACtEr VARyinG(45) cOlLAtE pG_CaTAlOg."default",     lNAmE ChARAcTER vARYinG(45) COLlaTe pG_catAlog."default",
+    SEx CharACter(1) CoLlatE pg_cATALog."default",
+    DatEOFbIrtH DATe,     ADdrESS CharAcTEr varyINg(75) coLLATE PG_cATALOg."default",
+    CiTY CHAraCter VARYiNG(45) COLLAtE Pg_CATaLoG."default",     couNtRy cHARacTeR vARYing(45) cOlLaTE PG_CAtaLOg."default",     cONStRaInt "idPerson_PK" PrImARy KEY ("idPerson")
+) WitH (
+    OiDS = faLse ) TaBleSpacE PG_DEfauLT;  alTeR taBLE PUbLIC.pERSON
+    ownER tO pOSTgrEs;
+   Create TabLe PuBlIc.Client
+(     "idClient" iNteger nOT null,     dOCUmenTcLIEnt chaRACtER VaRyinG(45) COLlaTe PG_CATAlOG."default",     conSTRAINT "idClient_PK" PRimAry key ("idClient"),     cONsTRaInT dC_UnIQ UNiQuE (DOcumENtCliEnT),
+    COnsTRAiNt "idClient_FK" FOreigN kEY ("idClient")         rEfERENcEs PUbLIC.PersON ("idPerson") maTCH SimpLE         on upDATe casCADe
+        oN DELETe CaScAdE         nOt VaLid ) WiTH (
+    oidS = FalSe )
+TABleSpaCE PG_dEfault;
+
+AlTER TabLe pUbLiC.cLient     oWNER TO PostGReS; 
+ 
+CReate tAblE PuBlIc.HoteL
+(
+    "idHotel" iNteGer NOT NuLl,     nAMe cHARACtER VarYINg(45) collATE pG_CAtaLog."default",
+    starS chARACTeR vAryinG(10) COLlATe Pg_CataLoG."default",
+    addrESs ChaRactER vARYinG(75) COllAte Pg_CaTALOg."default",
+    CitY ChAractER VArYinG(45) Collate pG_CatALog."default",
+    CoUntrY cHaRaCTER vArYiNG(45) collatE pG_CaTaLOg."default",
+    phOnE CHaracteR vArYIng(25) ColLAte pG_cataLOG."default",     fAX CharaCTER vaRYiNg(25) coLlAte pg_CAtaLOG."default",     coNSTRaiNt "idHotel_PK" pRImaRY KEY ("idHotel"),     coNSTrAiNT "fax_UNIQUE" uNiqUE (FAX),     ConSTRainT "phone_UNIQUE" UNiqUE (PHone)
+) wiTH (
+    oidS = FALse
+)
+TabLESPAce pG_dEFauLt;
+
+altER TABLE pUbLIC.HOTeL     OWNer tO PostGREs;
